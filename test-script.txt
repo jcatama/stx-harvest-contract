@@ -1,0 +1,17 @@
+;; Mint NFT to wallet_1
+(contract-call? .test-nft mint tx-sender)
+
+;; Check wallet_1's STX balance before
+::get_assets_maps
+
+;; Sell NFT for tax loss
+(contract-call? .stx-harvest harvest .test-nft u1)
+
+;; Check balances after
+::get_assets_maps
+
+;; Check contract balance
+(contract-call? .stx-harvest get-contract-balance)
+
+;; Check fee info
+(contract-call? .stx-harvest get-fee-info)
